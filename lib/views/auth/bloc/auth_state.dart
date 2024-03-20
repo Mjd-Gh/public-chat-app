@@ -7,13 +7,26 @@ final class AuthInitial extends AuthState {}
 
 
 // ---- ResultStates ----
-class SuccessState extends AuthState{}
+class SignUpSuccessState extends AuthState{}
 // ignore: must_be_immutable
-class ErrorState extends AuthState{
+class SignUpErrorState extends AuthState{
   String msg;
-  ErrorState(this.msg);
+  SignUpErrorState(this.msg);
 }
 
+class LogInSuccessState extends AuthState{}
+// ignore: must_be_immutable
+class LogInErrorState extends AuthState{
+   String msg;
+   LogInErrorState(this.msg);
+}
+
+class LogOutSuccessState extends AuthState{}
+// ignore: must_be_immutable
+class LogOutErrorState extends AuthState{
+   String msg;
+   LogOutErrorState(this.msg);
+}
 
 //-- is session available ? ----
 // ignore: must_be_immutable

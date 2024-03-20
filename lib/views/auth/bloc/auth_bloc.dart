@@ -44,16 +44,16 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           userEmail: event.email,
           userPassword: event.password,
         );
-        emit(SuccessState());
+        emit(LogInSuccessState());
       } on AuthException catch (error) {
         print(error);
-        emit(ErrorState('Invalid input'));
+        emit(LogInErrorState(error.message));
       } catch (error) {
         print(error);
-        emit(ErrorState('Something went wrong'));
+        emit(LogInErrorState('Something went wrong'));
       }
     } else {
-      emit(ErrorState('Invalid input'));
+      emit(LogInErrorState('Invalid input'));
     }
   }
 
@@ -67,26 +67,26 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           userEmail: event.email,
           userPassword: event.password,
         );
-        emit(SuccessState());
+        emit(SignUpSuccessState());
       } on AuthException catch (error) {
         print(error);
-        emit(ErrorState('Invalid input'));
+        emit(SignUpErrorState(error.message));
       } catch (error) {
         print(error);
-        emit(ErrorState('Something went wrong'));
+        emit(SignUpErrorState('Something went wrong'));
       }
     } else {
-      emit(ErrorState('Invalid input'));
+      emit(SignUpErrorState('Invalid input 2222'));
     }
   }
 
   FutureOr<void> logOut(LogoutEvent event, Emitter<AuthState> emit) async {
     try {
       await serviceLocator.signOut();
-      emit(SuccessState());
+      emit(LogOutSuccessState());
     } catch (error) {
       print(error);
-      emit(ErrorState('Something went wrong'));
+      emit(LogOutErrorState('Something went wrong'));
     }
   }
 }

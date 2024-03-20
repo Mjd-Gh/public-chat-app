@@ -28,14 +28,4 @@ class SignUpEvent extends AuthEvent {
 
 class LogoutEvent extends AuthEvent {}
 
-// ----- CHAT EVENTS ------------------
 
-// ---- Get Messages ----
-class GetMessagesEvent extends AuthEvent {}
-
-// --- Submit message Event ---
-// ignore: must_be_immutable
-class SubmitMessageEvent extends AuthEvent {
-  String message;
-  SubmitMessageEvent(this.message);
-}

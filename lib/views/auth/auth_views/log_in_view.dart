@@ -17,10 +17,10 @@ class LoginView extends StatelessWidget {
     final bloc = context.read<AuthBloc>();
     return BlocConsumer<AuthBloc, AuthState>(
       listener: (context, state) {
-        if (state is ErrorState) {
+        if (state is LogInErrorState) {
           context.showErrorSnackBar(state.msg);
         }
-        if (state is SuccessState) {
+        if (state is LogInSuccessState) {
           context.pushAndRemove(const ChatView());
         }
       },
