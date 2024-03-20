@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:public_chat_app/constants/spacing.dart';
-import 'package:public_chat_app/models/message_model.dart';
-import 'package:public_chat_app/models/profile_model.dart';
+import 'package:public_chat_app/chat/model/message_model.dart';
+import 'package:public_chat_app/auth/model/profile_model.dart';
 import 'package:timeago/timeago.dart';
 
 class ChatBubble extends StatelessWidget {
@@ -13,7 +13,7 @@ class ChatBubble extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
    List<Widget> chatContents = [
-      // Show a Circular avatar for other senders
+      // Show a Circular avatar for senders
       if (!message.isMine)
         CircleAvatar(
           backgroundColor: Colors.red[200],
@@ -34,8 +34,8 @@ class ChatBubble extends StatelessWidget {
           ),
           decoration: BoxDecoration(
             color: message.isMine
-                ? Color.fromARGB(255, 79, 158, 143)
-                : Color.fromARGB(255, 223, 223, 223),
+                ? const Color.fromARGB(255, 79, 158, 143)
+                : const Color.fromARGB(255, 223, 223, 223),
             borderRadius: BorderRadius.only(
               topLeft: const Radius.circular(15),
               bottomLeft: message.isMine

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:public_chat_app/constants/spacing.dart';
 import 'package:public_chat_app/extension/app_extension.dart';
-import 'package:public_chat_app/views/auth/auth_views/sign_up_view.dart';
-import 'package:public_chat_app/views/auth/bloc/auth_bloc.dart';
-import 'package:public_chat_app/views/chat/chat%20view/chat_view.dart';
+import 'package:public_chat_app/auth/views/sign_up_view.dart';
+import 'package:public_chat_app/auth/bloc/auth_bloc.dart';
+import 'package:public_chat_app/chat/view/chat_view.dart';
 
 // ignore: must_be_immutable
 class LoginView extends StatelessWidget {
