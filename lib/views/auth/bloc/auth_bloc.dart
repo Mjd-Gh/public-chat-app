@@ -1,5 +1,4 @@
 // ignore_for_file: depend_on_referenced_packages
-
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:get_it/get_it.dart';
@@ -32,40 +31,54 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   FutureOr<void> redirect(
       CheckSessionEvent event, Emitter<AuthState> emit) async {
-    final session = await serviceLocator.getSessionData();
-    emit(AvailableSessionState(session));
+    try {
+      final session = await serviceLocator.getSessionData();
+      emit(AvailableSessionState(session));
+    } catch (_) {
+      emit(AvailableSessionState(null));
+    }
   }
 
   FutureOr<void> login(LoginEvent event, Emitter<AuthState> emit) async {
-    try {
-      await serviceLocator.signIn(
-        userEmail: event.email,
-        userPassword: event.password,
-      );
-      emit(SuccessState());
-    } on AuthException catch (error) {
-      print(error);
+    if (event.email.isNotEmpty && event.password.isNotEmpty) {
+      try {
+        await serviceLocator.signIn(
+          userEmail: event.email,
+          userPassword: event.password,
+        );
+        emit(SuccessState());
+      } on AuthException catch (error) {
+        print(error);
+        emit(ErrorState('Invalid input'));
+      } catch (error) {
+        print(error);
+        emit(ErrorState('Something went wrong'));
+      }
+    } else {
       emit(ErrorState('Invalid input'));
-    } catch (error) {
-      print(error);
-      emit(ErrorState('Something went wrong'));
     }
   }
 
   FutureOr<void> signUp(SignUpEvent event, Emitter<AuthState> emit) async {
-    try {
-      await serviceLocator.signUp(
-        userName: event.name,
-        userEmail: event.email,
-        userPassword: event.password,
-      );
-      emit(SuccessState());
-    } on AuthException catch (error) {
-      print(error);
+    if (event.name.isNotEmpty &&
+        event.email.isNotEmpty &&
+        event.password.isNotEmpty) {
+      try {
+        await serviceLocator.signUp(
+          userName: event.name,
+          userEmail: event.email,
+          userPassword: event.password,
+        );
+        emit(SuccessState());
+      } on AuthException catch (error) {
+        print(error);
+        emit(ErrorState('Invalid input'));
+      } catch (error) {
+        print(error);
+        emit(ErrorState('Something went wrong'));
+      }
+    } else {
       emit(ErrorState('Invalid input'));
-    } catch (error) {
-      print(error);
-      emit(ErrorState('Something went wrong'));
     }
   }
 
