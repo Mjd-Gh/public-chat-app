@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:public_chat_app/injections/data_injection.dart';
 import 'package:public_chat_app/services/database_connector.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initializeDatabase();
+  DataInjection().setupDataInjection();
   runApp(const MainApp());
 }
 
