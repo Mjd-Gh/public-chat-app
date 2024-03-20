@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:meta/meta.dart';
-import 'package:public_chat_app/models/profile_model.dart';
 import 'package:public_chat_app/services/database_services.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 part 'auth_event.dart';
@@ -11,7 +10,6 @@ part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final serviceLocator = GetIt.I.get<DBService>();
-  Map<String, Profile> profileCache = {};
 
   AuthBloc() : super(AuthInitial()) {
     on<AuthEvent>((event, emit) {});
