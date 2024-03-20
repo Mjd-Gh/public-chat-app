@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:public_chat_app/services/database_connector.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await initializeDatabase();
   runApp(const MainApp());
 }
 
