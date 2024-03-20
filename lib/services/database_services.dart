@@ -1,9 +1,11 @@
+import 'package:public_chat_app/models/message_model.dart';
+import 'package:public_chat_app/models/profile_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class DBService {
   // Supabase Client
   final SupabaseClient supabase = Supabase.instance.client;
-  // late Stream<List<Message>> listOfMessages; // Fetched Messages
+  late Stream<List<Message>> listOfMessages; // Fetched Messages
 
   //-------------------- Auth Operations -------------------------
   // 1. Sign up Function
@@ -61,26 +63,26 @@ class DBService {
   }
 
   // -- Get messages stream --
-  // Future getMessagesStream() async {
-  //   final userID = await getCurrentUserID();
-  //   final msgStream = supabase
-  //       .from('messages')
-  //       .stream(primaryKey: ['id'])
-  //       .order('created_at')
-  //       .map((maps) => maps
-  //           .map((map) => Message.fromJson(json: map, myUserID: userID))
-  //           .toList());
-  //   listOfMessages = msgStream;
-  // }
+  Future getMessagesStream() async {
+    final userID = await getCurrentUserID();
+    final msgStream = supabase
+        .from('messages')
+        .stream(primaryKey: ['id'])
+        .order('created_at')
+        .map((maps) => maps
+            .map((map) => Message.fromJson(json: map, myUserID: userID))
+            .toList());
+    listOfMessages = msgStream;
+  }
 
 
   // --- Get Profile data by profile ID of a specific message ---
-  // Future getProfileData(String profileID) async {
-  //   final data =
-  //       await supabase.from('profiles').select().eq('id', profileID).single();
-  //   final profile = Profile.fromJson(data);
-  //   return profile;
-  // }
+  Future getProfileData(String profileID) async {
+    final data =
+        await supabase.from('profiles').select().eq('id', profileID).single();
+    final profile = Profile.fromJson(data);
+    return profile;
+  }
 
   // -- Submit message --
   Future submitMessage(String msgContent) async {
