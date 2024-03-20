@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:public_chat_app/extension/app_extension.dart';
 import 'package:public_chat_app/views/auth/auth_views/log_in_view.dart';
 import 'package:public_chat_app/views/auth/bloc/auth_bloc.dart';
-import 'package:public_chat_app/views/chat/chat_view.dart';
+import 'package:public_chat_app/views/chat/chat%20view/chat_view.dart';
 
 class RedirectView extends StatelessWidget {
   const RedirectView({super.key});

@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:meta/meta.dart';
-import 'package:public_chat_app/models/profile_model.dart';
 import 'package:public_chat_app/services/database_services.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 part 'auth_event.dart';
@@ -11,7 +10,6 @@ part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final serviceLocator = GetIt.I.get<DBService>();
-  Map<String, Profile> profileCache = {};
 
   AuthBloc() : super(AuthInitial()) {
     on<AuthEvent>((event, emit) {});
@@ -46,16 +44,16 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           userEmail: event.email,
           userPassword: event.password,
         );
-        emit(SuccessState());
+        emit(LogInSuccessState());
       } on AuthException catch (error) {
         print(error);
-        emit(ErrorState('Invalid input'));
+        emit(LogInErrorState(error.message));
       } catch (error) {
         print(error);
-        emit(ErrorState('Something went wrong'));
+        emit(LogInErrorState('Something went wrong'));
       }
     } else {
-      emit(ErrorState('Invalid input'));
+      emit(LogInErrorState('Invalid input'));
     }
   }
 
@@ -69,26 +67,26 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           userEmail: event.email,
           userPassword: event.password,
         );
-        emit(SuccessState());
+        emit(SignUpSuccessState());
       } on AuthException catch (error) {
         print(error);
-        emit(ErrorState('Invalid input'));
+        emit(SignUpErrorState(error.message));
       } catch (error) {
         print(error);
-        emit(ErrorState('Something went wrong'));
+        emit(SignUpErrorState('Something went wrong'));
       }
     } else {
-      emit(ErrorState('Invalid input'));
+      emit(SignUpErrorState('Invalid input 2222'));
     }
   }
 
   FutureOr<void> logOut(LogoutEvent event, Emitter<AuthState> emit) async {
     try {
       await serviceLocator.signOut();
-      emit(SuccessState());
+      emit(LogOutSuccessState());
     } catch (error) {
       print(error);
-      emit(ErrorState('Something went wrong'));
+      emit(LogOutErrorState('Something went wrong'));
     }
   }
 }

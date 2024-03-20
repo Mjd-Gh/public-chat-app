@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:public_chat_app/injections/data_injection.dart';
 import 'package:public_chat_app/services/database_connector.dart';
 import 'package:public_chat_app/views/auth/bloc/auth_bloc.dart';
+import 'package:public_chat_app/views/chat/bloc/chat_bloc.dart';
 import 'package:public_chat_app/views/redirector_view.dart';
 
 void main() async {
@@ -17,8 +18,15 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AuthBloc()..add(CheckSessionEvent()),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => AuthBloc()..add(CheckSessionEvent()),
+        ),
+        BlocProvider(
+          create: (context) => ChatBloc()..add(GetMessagesEvent()),
+        ),
+      ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
         home: RedirectView(),

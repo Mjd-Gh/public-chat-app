@@ -17,12 +17,12 @@ class SignUpView extends StatelessWidget {
     final bloc = context.read<AuthBloc>();
     return BlocConsumer<AuthBloc, AuthState>(
       listener: (context, state) {
-        if (state is ErrorState) {
+        if (state is SignUpErrorState) {
           context.showErrorSnackBar(
             state.msg,
           );
         }
-        if (state is SuccessState) {
+        if (state is SignUpSuccessState) {
           context.pushAndRemove(LoginView());
         }
       },
@@ -112,18 +112,14 @@ class SignUpView extends StatelessWidget {
                           children: [
                             InkWell(
                               onTap: () {
-                                try {
-                                  bloc.add(
-                                    SignUpEvent(
-                                      name: nameController.text,
-                                      email: emailController.text,
-                                      password: passwordController.text,
-                                    ),
-                                  );
-                                  context.pushAndRemove(LoginView());
-                                } catch (_) {
-                                  print("error");
-                                }
+                                // try {
+                                bloc.add(
+                                  SignUpEvent(
+                                    name: nameController.text,
+                                    email: emailController.text,
+                                    password: passwordController.text,
+                                  ),
+                                );
                               },
                               child: Container(
                                 padding: const EdgeInsets.symmetric(
@@ -136,7 +132,7 @@ class SignUpView extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(20),
                                 ),
                                 child: const Text(
-                                  "Sign in",
+                                  "Sign up",
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 20,
