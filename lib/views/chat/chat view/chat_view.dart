@@ -57,10 +57,6 @@ class ChatView extends StatelessWidget {
               builder: (context, snapshot) {
                 if (snapshot.hasData && snapshot.data != null) {
                   final messages = snapshot.data;
-                  // != null
-                  //     ? snapshot.data!
-                  //     : []; // List of messages
-
                   return Column(
                     children: [
                       Expanded(
