@@ -35,20 +35,20 @@ class SignUpView extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Row(
+                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       CircleAvatar(
                         radius: 50,
-                        backgroundColor: Color.fromARGB(255, 255, 156, 110),
-                        child: Icon(
+                        backgroundColor: Colors.red[300],
+                        child: const Icon(
                           Icons.person_4_outlined,
                           size: 70,
                           color: Colors.white,
                         ),
                       ),
                       kH16,
-                      Column(
+                      const Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
@@ -101,6 +101,7 @@ class SignUpView extends StatelessWidget {
                         kV8,
                         TextField(
                           controller: passwordController,
+                          obscureText: true,
                           decoration: const InputDecoration(
                             labelText: "Password",
                             border: OutlineInputBorder(),

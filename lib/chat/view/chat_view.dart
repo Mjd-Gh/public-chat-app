@@ -39,7 +39,6 @@ class ChatView extends StatelessWidget {
           child: IconButton(
             onPressed: () {
               authBloc.add(LogoutEvent());
-              context.pushAndRemove(LoginView());
             },
             icon: const Icon(
               Icons.logout_outlined,
@@ -57,10 +56,6 @@ class ChatView extends StatelessWidget {
               builder: (context, snapshot) {
                 if (snapshot.hasData && snapshot.data != null) {
                   final messages = snapshot.data;
-                  // != null
-                  //     ? snapshot.data!
-                  //     : []; // List of messages
-
                   return Column(
                     children: [
                       Expanded(

@@ -6,12 +6,14 @@ import 'package:meta/meta.dart';
 import 'package:public_chat_app/chat/model/message_model.dart';
 import 'package:public_chat_app/auth/model/profile_model.dart';
 import 'package:public_chat_app/services/database_services.dart';
-
 part 'chat_event.dart';
 part 'chat_state.dart';
 
 class ChatBloc extends Bloc<ChatEvent, ChatState> {
   final serviceLocator = GetIt.I.get<DBService>();
+
+  // Map to store ID as a key and 
+  //Profile object to store profile data
   Map<String, Profile> profileCache = {};
 
   ChatBloc() : super(ChatInitial()) {
@@ -47,7 +49,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     if (profileCache[profileId] != null) {
       return;
     }
-    final profileData = await serviceLocator.getProfileData(profileId);
+    final  profileData = await serviceLocator.getProfileData(profileId);
     profileCache[profileId] = profileData;
     await serviceLocator.getMessagesStream();
     Stream<List<Message>> messages = serviceLocator.listOfMessages;

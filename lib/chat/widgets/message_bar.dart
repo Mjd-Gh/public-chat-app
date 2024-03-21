@@ -12,7 +12,7 @@ class MessageBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bloc = context.read<ChatBloc>();
+    final bloc = context.read<ChatBloc>();//-----------
     return Container(
       color: const Color.fromARGB(255, 54, 54, 54),
       child: Padding(

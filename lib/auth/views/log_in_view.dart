@@ -77,6 +77,7 @@ class LoginView extends StatelessWidget {
                         kV8,
                         TextField(
                           controller: passwordController,
+                          obscureText: true,
                           decoration: const InputDecoration(
                             labelText: "Password",
                             border: OutlineInputBorder(),
@@ -97,12 +98,12 @@ class LoginView extends StatelessWidget {
                                 onTap: () {
                                   context.pushTo(SignUpView());
                                 },
-                                child: const Text(
+                                child: Text(
                                   "Sign Up",
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 17,
-                                    color: Color.fromARGB(255, 76, 180, 156),
+                                    color: Colors.red[300],
                                   ),
                                 ),
                               ),
@@ -131,7 +132,7 @@ class LoginView extends StatelessWidget {
                             child: const Text(
                               "Sign in",
                               style: TextStyle(
-                                color: Colors.white,
+                                // color: Colors.white,
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
                               ),

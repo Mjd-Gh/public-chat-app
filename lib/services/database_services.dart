@@ -65,12 +65,12 @@ class DBService {
   // -- Get messages stream --
   Future getMessagesStream() async {
     final userID = await getCurrentUserID();
-    final msgStream = supabase
+    final Stream<List<Message>> msgStream = supabase
         .from('messages')
         .stream(primaryKey: ['id'])
         .order('created_at')
-        .map((maps) => maps
-            .map((map) => Message.fromJson(json: map, myUserID: userID))
+        .map((massages) => massages
+            .map((message) => Message.fromJson(json: message, myUserID: userID))
             .toList());
     listOfMessages = msgStream;
   }

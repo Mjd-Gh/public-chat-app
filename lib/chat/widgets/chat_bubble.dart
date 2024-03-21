@@ -12,7 +12,7 @@ class ChatBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   List<Widget> chatContents = [
+    List<Widget> chatContents = [
       // Show a Circular avatar for senders
       if (!message.isMine)
         CircleAvatar(
