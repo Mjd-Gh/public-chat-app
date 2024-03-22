@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:public_chat_app/chat/bloc/chat_bloc.dart';
+import 'package:public_chat_app/features/chat/bloc/chat_bloc.dart';
 
 // ignore: must_be_immutable
 class MessageBar extends StatelessWidget {

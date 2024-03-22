@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:public_chat_app/extension/app_extension.dart';
-import 'package:public_chat_app/chat/model/message_model.dart';
-import 'package:public_chat_app/auth/model/profile_model.dart';
-import 'package:public_chat_app/auth/views/log_in_view.dart';
-import 'package:public_chat_app/chat/bloc/chat_bloc.dart';
-import 'package:public_chat_app/auth/bloc/auth_bloc.dart';
-import 'package:public_chat_app/chat/widgets/chat_bubble.dart';
-import 'package:public_chat_app/chat/widgets/message_bar.dart';
+import 'package:public_chat_app/features/chat/model/message_model.dart';
+import 'package:public_chat_app/features/auth/model/profile_model.dart';
+import 'package:public_chat_app/features/auth/views/log_in_view.dart';
+import 'package:public_chat_app/features/chat/bloc/chat_bloc.dart';
+import 'package:public_chat_app/features/auth/bloc/auth_bloc.dart';
+import 'package:public_chat_app/features/chat/widgets/chat_bubble.dart';
+import 'package:public_chat_app/features/chat/widgets/message_bar.dart';
 
 class ChatView extends StatelessWidget {
   const ChatView({super.key});

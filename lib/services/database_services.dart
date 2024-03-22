@@ -1,5 +1,5 @@
-import 'package:public_chat_app/chat/model/message_model.dart';
-import 'package:public_chat_app/auth/model/profile_model.dart';
+import 'package:public_chat_app/features/chat/model/message_model.dart';
+import 'package:public_chat_app/features/auth/model/profile_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class DBService {
