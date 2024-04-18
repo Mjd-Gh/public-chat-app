@@ -3,10 +3,12 @@
 Welcome to the repository for the rebuilt version of a public chat app using Flutter and the Supabase real-time database. This project aims to enhance an existing Flutter chat application by integrating advanced state management and dependency injection techniques.
 
 ## Features
-- **Authentication Screens:** Improved login and registration screens.
-- **Chat Screen:** Enhanced chat interface with real-time messaging.
-- **State Management:** Utilized BLoC for efficient state management.
-- **Dependency Injection:** Integrated Get-It package for dependency injection.
+- **Authentication Screens:** Streamlined login and registration interfaces.
+- **Chat Screen:** Refreshed chat interface supporting real-time messaging.
+- **Log-out Feature:** Enabled log-out option for users.
+- **State Management:** Employed BLoC for effective state control.
+- **Dependency Injection:** Incorporated Get-It package for dependency management.
+
 
 ## Original App Resource
 The original chat app was built with Flutter and utilized the Supabase real-time database. The rebuild focuses on improving and optimizing the existing functionalities.
